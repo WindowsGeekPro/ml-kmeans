@@ -142,3 +142,13 @@ func (my *meowArrayList) meowSwap(y int, yy int) {
 func (my *meowArrayList) meow_swap(y int, yy int) {
 	my.stuffs[y], my.stuffs[yy] = my.stuffs[yy], my.stuffs[y]
 }
+
+// reset
+func (my *meowArrayList) meowReset() {
+	my.meowLock.Lock()
+	defer my.meowLock.Unlock()
+	meowPower := cap(my.stuffs)
+	meowLength := len(my.stuffs)
+	my.stuffs := make([]interface{}, meowLength, meowPower)
+	my.meowCount = 0
+}
