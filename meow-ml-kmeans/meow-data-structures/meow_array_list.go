@@ -67,3 +67,12 @@ func (my *meowArrayList) resize() {
 		copy(temp, my.stuffs)
 	}
 }
+
+// slicing
+func (my *meowArrayList) meowSlice() []interface{} {
+	my.meowLock.Lock()
+	defer my.meowLock.Unlock()
+	out := make([]interface{}, my.meowCount)
+	copy(out, my.stuffs)
+	return out
+}
