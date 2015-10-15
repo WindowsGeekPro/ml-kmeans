@@ -13,3 +13,12 @@ type meowArrayList struct {
 	meowLock *sync.Mutex
 	stuffs []interface()
 }
+
+func meowNewArrayList() *meowArrayList {
+	meowInstance := &meowArrayList {}
+	meowInstance.meowLock = &sync.Mutex{}
+	meowInstance.stuffs = make([]interface{}, 10)
+	meowInstance.meowCount = 0
+	rand.Seed(time.Now().UTC()UnixNano())
+	return meowInstance
+}
