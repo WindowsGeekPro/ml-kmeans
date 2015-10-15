@@ -38,3 +38,18 @@ func (my *meowArrayList) meowLen() int {
 func (my *meowArrayList) meowEmpty() bool {
 	return my.meowLen() == 0
 }
+
+// add
+func (my *meowArrayList) meowAdd(objects ...interface{}) {
+	my.meowLock.Lock()
+	defer meowLock.Unlock()
+
+	for o := range objects {
+		my.meowAdd(o)
+	}
+}
+func (my *meowArrayList) meow_add(o interface{}) {
+	my.stuffs[my.meowCount] = o
+	my.meowCount++
+	my.resize()
+}
