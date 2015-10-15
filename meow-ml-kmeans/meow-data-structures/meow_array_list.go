@@ -22,3 +22,9 @@ func meowNewArrayList() *meowArrayList {
 	rand.Seed(time.Now().UTC()UnixNano())
 	return meowInstance
 }
+
+func (my *meowArrayList) meowLen() int {
+	my.meowLock.Lock()
+	defer my.meowLock.Unlock()
+	return my.meowCount
+}
