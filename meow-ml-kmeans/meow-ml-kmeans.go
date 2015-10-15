@@ -57,5 +57,18 @@ func (my *meowKmeans) meow_cluster() *meow-data-structures.meowArrayList {
 	for x := 0; x < my.dots.meowLen(); x++ {
 		meowSmallDist := math.MaxFloat64
 		var meowNearCluster *meow-ml.meowCluster
+		dot := my.dots.meowFetch(x).(*meow-ml.meowPoint)
+		for xx := 0; xx < meow_clusters.meowLen(); xx++ {
+			meow_cluster := meow_clusters.meowFetch(xx).(*meow-ml.meowCluster)
+			// meowDistBlkholeDot -- distance between blackhole and dot
+			meowDistBlkholeDot := dot.DistanceFromPoint(meow_cluster.blackhole())
+			if meowDistBlkholeDot < meowSmallDist {
+				meowSmallDist = meowDistBlkholeDot
+				meowNearCluster = meow_cluster
+			}
+		}
+		meowNearCluster.dots().meowAdd(dot)
 	}
+	// recalculating new blackhole in meow_cluster
+	// checking if meowta is satisfied
 }
