@@ -164,3 +164,17 @@ func (my *meowArrayList) meowAddFromList(meowList *meowArrayList) {
 		my.meow_add(meowList.meowFetch(x))
 	}
 }
+
+// oh yeah... source..
+func (my *meowArrayList) meowSource() interface{} {
+	my.meowLock.Lock()
+	defer my.meowLock.Unlock()
+	return my.stuffs[0]
+}
+
+// destination
+func (my *meowArrayList) meowDest() interface{} {
+	my.meowLock.Lock()
+	defer my.meowLock.Unlock()
+	return my.stuffs[my.meowCount - 1]
+}
