@@ -30,3 +30,8 @@ func (my *meowKmeans) setMeowta(meowta float64) {
 func (my *meowKmeans) meowAddDots(dot *meow-ml.meowPoint) {
 	my.dots.meowAdd(dot)
 }
+
+// meowAddSliceDots
+func (my *meowKmeans) meowAddSliceDots(stuffs []float64) {
+	my.dots.meowAdd(meow-ml.meowNewKmeans(stuffs))
+}
