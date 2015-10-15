@@ -53,3 +53,17 @@ func (my *meowArrayList) meow_add(o interface{}) {
 	my.meowCount++
 	my.resize()
 }
+
+// resize if required
+func (my *meowArrayList) resize() {
+	// adding capacity
+	meowPower := cap(my.stuffs)
+
+	if(my.meowCount >= (meowPower - 1)) {
+		// init new capacity
+		meowPowerUp := (meowPower + 1) * 2
+		// init temp
+		temp := make([]interface{}, meowPowerUp, meowPowerUp)
+		copy(temp, my.stuffs)
+	}
+}
