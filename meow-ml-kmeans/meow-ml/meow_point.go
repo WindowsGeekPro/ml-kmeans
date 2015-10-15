@@ -18,3 +18,7 @@ func meowNewPoint(stuffs []float64) *meowPoint {
 	}
 	return my
 }
+
+func (my *meowPoint) Stuffs() *meow-data-structures.meowArrayList {
+	return my.stuffs
+}
