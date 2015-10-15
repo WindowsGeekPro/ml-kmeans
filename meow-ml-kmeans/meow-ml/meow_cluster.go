@@ -14,3 +14,8 @@ func meowNewCluster(blackhole *meowPoint) *meowCluster {
 	my.dots = meow-data-structures.meowNewArrayList()
 	return my
 }
+
+// dots
+func (my *meowCluster) dots() *meow-data-structures.meowArrayList {
+	return my.dots
+}
