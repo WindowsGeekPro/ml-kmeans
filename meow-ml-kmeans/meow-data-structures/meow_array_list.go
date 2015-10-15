@@ -42,7 +42,7 @@ func (my *meowArrayList) meowEmpty() bool {
 // add
 func (my *meowArrayList) meowAdd(objects ...interface{}) {
 	my.meowLock.Lock()
-	defer meowLock.Unlock()
+	defer my.meowLock.Unlock()
 
 	for o := range objects {
 		my.meowAdd(o)
@@ -86,10 +86,17 @@ func (my *meowArrayList) meowIndex(o interface{}) int {
 func (my *meowArrayList) meow_index(o interface{}) int {
 	meow_indexer := -1
 	for x := 0; x < my.meowCount; x++ {
-		if my.items[x] == 0 {
+		if my.stuffs[x] == 0 {
 			meow_indexer = x
 			break;
 		}
 	}
 	return meow_indexer
+}
+
+// fetching
+func (my *meowArrayList) meowFetch(meow_indexer int) interface{} {
+	my.meowLock.Lock()
+	defer my.meowLock.Unlock()
+	return my.stuffs[meow_indexer]
 }
