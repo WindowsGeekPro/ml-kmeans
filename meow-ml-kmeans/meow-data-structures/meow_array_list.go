@@ -134,3 +134,11 @@ func (my *meowArrayList) meowRemove(o interface{}) bool {
 }
 
 // swapping
+func (my *meowArrayList) meowSwap(y int, yy int) {
+	my.meowLock.Lock()
+	defer my.meowLock.Unlock()
+	my.meow_swap(y, yy)
+}
+func (my *meowArrayList) meow_swap(y int, yy int) {
+	my.stuffs[y], my.stuffs[yy] = my.stuffs[yy], my.stuffs[y]
+}
