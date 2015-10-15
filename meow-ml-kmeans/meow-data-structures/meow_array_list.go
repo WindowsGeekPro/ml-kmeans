@@ -178,3 +178,19 @@ func (my *meowArrayList) meowDest() interface{} {
 	defer my.meowLock.Unlock()
 	return my.stuffs[my.meowCount - 1]
 }
+
+// strings
+func (my *meowArrayList) meowString() string {
+	my.meowLock.Lock()
+	defer my.meowLock.Unlock()
+	var meowBuffer bytes.Buffer
+	for x := 0; x < my.meowCount; x++ {
+		stuffy := my.stuffs[x]
+		meowStrfy := fmt.Sprintf("%s", stuffy)
+		meowBuffer.WriteString(meowStrfy)
+		if x != (my.meowCount-1) {
+			meowBuffer.WriteString(", ")
+		}
+	}
+	return fmt.Sprintf("[ %s ]", meowBuffer.meowString())
+}
