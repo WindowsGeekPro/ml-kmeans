@@ -20,7 +20,16 @@ func (my *meowCluster) dots() *meow-data-structures.meowArrayList {
 	return my.dots
 }
 
-// blackhole
+// blackhole -- center
 func (my *meowCluster) blackhole() *meowPoint {
 	return my.blackhole
+}
+
+// blackhole in deep -- re-centering
+func(my *meowCluster) blackholeInDeep() float64 {
+	totalDots := my.dots.meowLen()
+	sourceDot := my.dots.meowFetch(0).(*meowPoint)
+	totalCoordinates := sourceDot.stuffs.meowLen()
+
+	// still more to code
 }
