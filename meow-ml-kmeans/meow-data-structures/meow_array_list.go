@@ -116,3 +116,19 @@ func (my *meowArrayList) meowSample() interface{} {
 func (my *meowArrayList) meowRegisters(o interface{}) bool {
 	return my.meowIndex(o) != -1
 }
+
+// remove
+func (my *meowArrayList) meowRemove(o interface{}) bool {
+	my.meowLock.Lock()
+	defer my.meowLock.Unlock()
+	meow_indexer := my.meow_index(o)
+	if meow_indexer == -1 {
+		return false
+	}
+	my.stuffs[meow_indexer] = nil
+	for x := meow_indexer; x < my.meowCount - 1; x++ {
+		my.meow_swap(x, x+1)
+	}
+	my.meowCount--
+	return true
+}
