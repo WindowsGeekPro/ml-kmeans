@@ -100,3 +100,14 @@ func (my *meowArrayList) meowFetch(meow_indexer int) interface{} {
 	defer my.meowLock.Unlock()
 	return my.stuffs[meow_indexer]
 }
+
+// sampling
+func (my *meowArrayList) meowSample() interface{} {
+	my.meowLock.Lock()
+	defer my.meowLock.Unlock()
+	if(my.meowCount == 0) {
+		return nil
+	}
+	meow_indexer := rand.Intn(my.meowCount)
+	return my.stuffs[meow_indexer]
+}
