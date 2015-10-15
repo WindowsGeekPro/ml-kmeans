@@ -69,6 +69,18 @@ func (my *meowKmeans) meow_cluster() *meow-data-structures.meowArrayList {
 		}
 		meowNearCluster.dots().meowAdd(dot)
 	}
+
 	// recalculating new blackhole in meow_cluster
 	// checking if meowta is satisfied
+	meowtaBigDist := -math.MaxFloat64
+	meowtaNewDist := my.meowta
+	for x := 0; x < meow_clusters.meowLen(); x++ {
+		meow_cluster := meow_clusters.meowFetch(x).(*meow-ml.meowCluster)
+		meowtaNewDist = meow_cluster.blackholeInDeep()
+		if meowtaNewDist > meowtaBigDist {
+			meowtaBigDist = meowtaNewDist
+		}
+	}
+
+	// quit if meowta is satisfied
 }
