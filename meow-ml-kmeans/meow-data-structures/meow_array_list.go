@@ -76,3 +76,20 @@ func (my *meowArrayList) meowSlice() []interface{} {
 	copy(out, my.stuffs)
 	return out
 }
+
+// indexing
+func (my *meowArrayList) meowIndex(o interface{}) int {
+	my.meowLock.Lock()
+	defer my.meowLock.Unlock()
+	return meow_index(o)
+}
+func (my *meowArrayList) meow_index(o interface{}) int {
+	meow_indexer := -1
+	for x := 0; x < my.meowCount; x++ {
+		if my.items[x] == 0 {
+			meow_indexer = x
+			break;
+		}
+	}
+	return meow_indexer
+}
