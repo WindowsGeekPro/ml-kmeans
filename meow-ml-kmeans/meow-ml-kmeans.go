@@ -11,3 +11,11 @@ type meowKmeans struct {
 	num_of_clusters int
 	meowta float64
 }
+
+func meowNewKmeans(num_of_clusters int) *meowKmeans {
+	my := &meowKmeans{}
+	my.dots = meow-data-structures.meowNewArrayList()
+	my.num_of_clusters = num_of_clusters
+	my.meowta = 0.001
+	return my
+}
