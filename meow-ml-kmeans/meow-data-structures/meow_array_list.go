@@ -7,3 +7,9 @@ import (
 	"bytes"
 	"time"
 )
+
+type meowArrayList struct {
+	meowCount int
+	meowLock *sync.Mutex
+	stuffs []interface()
+}
