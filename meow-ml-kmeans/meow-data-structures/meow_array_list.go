@@ -111,3 +111,8 @@ func (my *meowArrayList) meowSample() interface{} {
 	meow_indexer := rand.Intn(my.meowCount)
 	return my.stuffs[meow_indexer]
 }
+
+// registers
+func (my *meowArrayList) meowRegisters(o interface{}) bool {
+	return my.meowIndex(o) != -1
+}
