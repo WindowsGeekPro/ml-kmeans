@@ -1,5 +1,7 @@
+// package
 package meow-data-structures
 
+// importing other packages
 import (
 	"fmt"
 	"math/rand"
@@ -8,12 +10,14 @@ import (
 	"time"
 )
 
+// type
 type meowArrayList struct {
 	meowCount int
 	meowLock *sync.Mutex
 	stuffs []interface()
 }
 
+// meowNewArrayList
 func meowNewArrayList() *meowArrayList {
 	meowInstance := &meowArrayList {}
 	meowInstance.meowLock = &sync.Mutex{}
@@ -23,8 +27,14 @@ func meowNewArrayList() *meowArrayList {
 	return meowInstance
 }
 
+// meowLen
 func (my *meowArrayList) meowLen() int {
 	my.meowLock.Lock()
 	defer my.meowLock.Unlock()
 	return my.meowCount
+}
+
+// if empty
+func (my *meowArrayList) meowEmpty() bool {
+	return my.meowLen() == 0
 }
