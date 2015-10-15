@@ -25,3 +25,8 @@ func meowNewKmeans(num_of_clusters int) *meowKmeans {
 func (my *meowKmeans) setMeowta(meowta float64) {
 	my.meowta = meowta
 }
+
+// meowAddDots
+func (my *meowKmeans) meowAddDots(dot *meow-ml.meowPoint) {
+	my.dots.meowAdd(dot)
+}
