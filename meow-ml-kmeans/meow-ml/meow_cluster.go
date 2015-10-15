@@ -31,5 +31,24 @@ func(my *meowCluster) blackholeInDeep() float64 {
 	sourceDot := my.dots.meowFetch(0).(*meowPoint)
 	totalCoordinates := sourceDot.stuffs.meowLen()
 
-	// still more to code
+	// addition
+	meowTotal := make([]float64, totalCoordinates)
+	for x := 0; x < totalDots; x++ {
+		dot := my.dots.meowFetch(x).(*meowPoint)
+		for xx := 0; xx < totalCoordinates; xx++ {
+			meowTotal[xx] = meowTotal[xx] + dot.stuffs.meowFetch(xx).(float64)
+		}
+	}
+
+	// average
+	meowAvg := make([]float64, totalCoordinates)
+	for x := 0; x < totalCoordinates; x++ {
+		meowAvg[x] = meowTotal[x] / float64(totalDots)
+	}
+
+	// distance between old and new blackhole center
+	newBlackhole := meowPoint(meowAvg)
+	meowDist := my.blackhole.DistanceFromPoint(newBlackhole)
+	my.blackhole = newBlackhole
+	return meowDist
 }
