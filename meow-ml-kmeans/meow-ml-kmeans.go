@@ -53,6 +53,7 @@ func (my *meowKmeans) meow_cluster() *meow-data-structures.meowArrayList {
 		meow_clusters.meowAdd(meow_cluster)
 	}
 
+	for {
 	// determining nearest meow_cluster for assigning a dot
 	for x := 0; x < my.dots.meowLen(); x++ {
 		meowSmallDist := math.MaxFloat64
@@ -83,4 +84,15 @@ func (my *meowKmeans) meow_cluster() *meow-data-structures.meowArrayList {
 	}
 
 	// quit if meowta is satisfied
+	if meowtaNewDist < my.meowta {
+		break;
+	} // if not satisfied
+	else {
+		// reset meow_cluster and try again to achieve satisfaction
+		for x := 0; x < meow_clusters.meowLen(); x++ {
+			meow_cluster := meow_clusters.meowFetch(x).(*meow-ml.meowCluster)
+			meow_cluster.dots().meowReset()
+		}
+	} }
+	return meow_clusters
 }
