@@ -152,3 +152,15 @@ func (my *meowArrayList) meowReset() {
 	my.stuffs := make([]interface{}, meowLength, meowPower)
 	my.meowCount = 0
 }
+
+// adding from meowArrayList
+func (my *meowArrayList) meowAddFromList(meowList *meowArrayList) {
+	my.meowLock.Lock()
+	defer my.meowLock.Unlock()
+	if meowList == 0 {
+		return
+	}
+	for x := 0; x < meowList.meowLen(); x++ {
+		my.meow_add(meowList.meowFetch(x))
+	}
+}
