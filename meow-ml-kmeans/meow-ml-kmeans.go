@@ -35,3 +35,22 @@ func (my *meowKmeans) meowAddDots(dot *meow-ml.meowPoint) {
 func (my *meowKmeans) meowAddSliceDots(stuffs []float64) {
 	my.dots.meowAdd(meow-ml.meowNewKmeans(stuffs))
 }
+
+// clustering
+func (my *meowKmeans) meowCluster() *meow-data-structures.meowArrayList {
+	if(my.num_of_clusters == 1) {
+		panic("Pick more than one cluster ;)")
+	}
+	meowClusters := meow-data-structures.meowArrayList()
+	uniqueBlackholes := meow-data-structures.meowNewHashSet()
+	for x := 0; x < my.num_of_clusters; x++ {
+		randomBlackhole := my.dots.meowSample().(*meow-ml.meowPoint)
+		for uniqueBlackholes.meowRegisters(randomBlackhole) {
+			randomBlackhole = my.dots.meowSample().(*meow-ml.meowPoint)
+		}
+		uniqueBlackholes.meowAdd(randomBlackhole)
+		meowCluster := meow-ml.meowNewKmeans(randomBlackhole)
+		meowClusters.meowAdd(meowCluster)
+	}
+	
+}
