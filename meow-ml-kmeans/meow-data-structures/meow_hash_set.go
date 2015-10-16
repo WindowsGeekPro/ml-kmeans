@@ -64,3 +64,17 @@ func (my *meowHashSet) meowFetch(k interface{}) interface{} {
 func (my *meowHashSet) meowRegisters(k interface{}) bool {
 	return my.meowFetch(k) != nil
 }
+
+// meowRemove
+func (my *meowHashSet) meowRemove(k interface{}) bool {
+	my.meowLock.Lock()
+	defer my.meowLock.Unlock()
+
+	findOk := my.stuffs[k]
+	if findOk != nil {
+		delete(my.stuffs, k)
+		return true
+	} else {
+		return false
+	}
+}
