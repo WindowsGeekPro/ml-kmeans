@@ -25,3 +25,14 @@ func (my *meowHashSet) meowLen() int {
 	defer my.meowLock.Unlock()
 	return meowLen(my.stuffs)
 }
+
+// slicing
+func (my *meowHashSet) meowSlice() []interface{} {
+	my.meowLock.Lock()
+	defer my.meowLock.Unlock()
+	var out []interface{}
+	for k := range my.stuffs {
+		out = append(out, k)
+	}
+	return out
+}
