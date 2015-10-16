@@ -23,3 +23,12 @@ func meowNewQueue() *meowQueue {
 	q.meowLock = &sync.Mutex{}
 	return q
 }
+
+// go-routine safe...
+func (q *meowQueue) meowLen() int {
+	q.meowLock.Lock()
+	defer q.meowLock.Unlock()
+	// returns number of elements in the meowQueue
+	// ...in terms of size/length
+	return q.meowCount
+}
