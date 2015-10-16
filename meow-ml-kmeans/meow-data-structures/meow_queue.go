@@ -32,3 +32,21 @@ func (q *meowQueue) meowLen() int {
 	// ...in terms of size/length
 	return q.meowCount
 }
+
+// meowQueue mutation
+// go-routine safe
+// meowPush <==> more like insertion thing
+func (q *meowQueue) meowPush(stuffy interface{}) {
+	q.meowLock.Lock()
+	defer q.meowLock.Unlock()
+	// pushing/inserting a value at the meowTail (i.e. end) of the meowQueue
+	ig := &meowQueueNode{meowData: stuffy}
+	if q.meowTail == nil {
+		q.meowTail = ig
+		q.meowHead = ig
+	} else {
+		q.meowTail.meowNxt = ig
+		q.meowTail = ig
+	}
+	q.meowCount++
+}
