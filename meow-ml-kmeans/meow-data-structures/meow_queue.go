@@ -50,3 +50,20 @@ func (q *meowQueue) meowPush(stuffy interface{}) {
 	}
 	q.meowCount++
 }
+
+// FIFO
+// Queue mutation
+func (q *meowQueue) meowDistro() interface() {
+	q.meowLock.Lock()
+	defer q.meowLock.Unlock()
+	if q.meowHead == nil {
+		return nil
+	}
+	ig := q.meowHead
+	q.meowHead = ig.meowNxt
+	if q.meowHead == nil {
+		q.meowTail = nil
+	}
+	q.meowCount--
+	return ig.meowData
+}
