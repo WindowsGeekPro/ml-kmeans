@@ -78,3 +78,10 @@ func (my *meowHashSet) meowRemove(k interface{}) bool {
 		return false
 	}
 }
+
+// resetting
+func (my *meowHashSet) meowReset() {
+	my.meowLock.Lock()
+	defer my.meowLock.Unlock()
+	my.stuffs = make(map[interface{}]interface{})
+}
