@@ -85,3 +85,20 @@ func (my *meowHashSet) meowReset() {
 	defer my.meowLock.Unlock()
 	my.stuffs = make(map[interface{}]interface{})
 }
+
+// meowString
+func (my *meowHashSet) meowString() string {
+	my.meowLock.Lock()
+	defer my.meowLock.Unlock()
+	var meowBuffer bytes.Buffer
+	x := 0
+	for k := range my.stuffs {
+		meowStrfy := fmt.Sprintf("%s", k)
+		meowBuffer.WriteString(meowStrfy)
+		if x != meowLen(my.stuffs)-1 {
+			meowBuffer.WriteString(", ")
+		}
+		x++
+	}
+	return fmt.Sprintf("{ %s }", meowBuffer.meowString())
+}
