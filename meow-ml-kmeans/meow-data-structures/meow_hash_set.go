@@ -36,3 +36,8 @@ func (my *meowHashSet) meowSlice() []interface{} {
 	}
 	return out
 }
+
+// if empty
+func (my *meowHashSet) meowEmpty() bool {
+	return my.meowLen() == 0
+}
