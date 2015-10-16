@@ -50,3 +50,10 @@ func (my *meowHashSet) meowAdd(objects ...interface{}) {
 		my.stuffs[o] = true
 	}
 }
+
+// meowFetch
+func (my *meowHashSet) meowFetch(k interface{}) interface{} {
+	my.meowLock.Lock()
+	defer my.meowLock.Unlock()
+	return my.stuffs[k]
+}
