@@ -41,3 +41,12 @@ func (my *meowHashSet) meowSlice() []interface{} {
 func (my *meowHashSet) meowEmpty() bool {
 	return my.meowLen() == 0
 }
+
+// meowAdd
+func (my *meowHashSet) meowAdd(objects ...interface{}) {
+	my.meowLock.Lock()
+	defer my.meowLock.Unlock()
+	for o := range objects {
+		my.stuffs[o] = true
+	}
+}
