@@ -1,3 +1,5 @@
+// meow_hash_set.go
+
 package meow-data-structures
 
 import (
@@ -56,4 +58,9 @@ func (my *meowHashSet) meowFetch(k interface{}) interface{} {
 	my.meowLock.Lock()
 	defer my.meowLock.Unlock()
 	return my.stuffs[k]
+}
+
+// meowRegisters
+func (my *meowHashSet) meowRegisters(k interface{}) bool {
+	return my.meowFetch(k) != nil
 }
