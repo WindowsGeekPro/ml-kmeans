@@ -41,4 +41,18 @@ func (s *meowStack) meowPush(stuffy interface{}) {
 	s.meowCount++
 }
 
-// meowPop
+// meowJump
+func (s *meowStack) meowJump() interface{} {
+	s.meowLock.Lock()
+	defer s.meowLock.Unlock()
+	var ig *meowStackNode
+	if s.meowHead != nil {
+		ig = s.meowHead
+		s.meowHead = ig.meowNxt
+		s.meowCount--
+	}
+	if ig == nil {
+		return nil
+	}
+	return ig.meowData
+}
