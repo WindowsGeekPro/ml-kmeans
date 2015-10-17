@@ -24,3 +24,9 @@ func meow_new_lrucache(meowPower int) *meow_lrucache {
 	meowInstance.meowPower = meowPower
 	return meowInstance
 }
+
+func (my *meow_lrucache) meowLen() int {
+	my.meowLock.Lock()
+	defer my.meowLock.Unlock()
+	return len(my.stuffs)
+}
