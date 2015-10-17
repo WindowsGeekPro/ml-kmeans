@@ -16,3 +16,11 @@ type meow_lrucache struct {
 	meowPower int
 	stuffs map[interface{}]*meow_lru_node
 }
+
+func meow_new_lrucache(meowPower int) *meow_lrucache {
+	meowInstance := &meow_lrucache{}
+	meowInstance.meowLock = &sync.Mutex{}
+	meowInstance.stuffs = make(map[interface{}]*meow_lru_node)
+	meowInstance.meowPower = meowPower
+	return meowInstance
+}
