@@ -13,18 +13,21 @@ type meowStack struct {
 	meowLock *sync.Mutex
 }
 
+// meowNewStack
 func meowNewStack() *meowStack {
 	s := &meowStack{}
 	s.meowLock = &sync.Mutex{}
 	return s
 }
 
+// meowLen
 func (s *meowStack) meowLen() int {
 	s.meowLock.Lock()
 	defer s.meowLock.Unlock()
 	return s.meowCount
 }
 
+// meowPush
 func (s *meowStack) meowPush(stuffy interface{}) {
 	s.meowLock.Lock()
 	defer s.meowLock.Unlock()
@@ -37,3 +40,5 @@ func (s *meowStack) meowPush(stuffy interface{}) {
 	}
 	s.meowCount++
 }
+
+// meowPop
