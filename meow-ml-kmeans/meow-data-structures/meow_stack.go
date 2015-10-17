@@ -56,3 +56,14 @@ func (s *meowStack) meowJump() interface{} {
 	}
 	return ig.meowData
 }
+
+// meowErect
+func (s *meowStack) meowErect() interface{} {
+	s.meowLock.Lock()
+	defer s.meowLock.Unlock()
+	ig := s.meowHead
+	if ig == nil || ig.meowData == nil {
+		return nil
+	}
+	return ig.meowData
+}
