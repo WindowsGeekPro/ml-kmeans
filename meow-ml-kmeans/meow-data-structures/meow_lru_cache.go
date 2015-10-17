@@ -43,7 +43,7 @@ func (my *meow_lrucache) meowPut(meowKey interface{}, meowVal interface{}) {
 		my.remove_meowNode_from_dll(meowNode)
 	}
 	meowNode.meowVal = meowNode
-	my.add_stuffy_to_head_of_dll(meowNode)
+	my.add_stuffy_to_dll(meowNode)
 	my.dump_objects()
 }
 
@@ -57,3 +57,14 @@ func (my *meow_lrucache) meowRemove(meowKey interface{}) {
 	}
 }
 
+func (my *meow_lrucache) remove_meowNode_from_dll(stuffy *meow_lru_node) {
+	// TODO
+}
+
+func (my *meow_lrucache) add_stuffy_to_dll(stuffy *meow_lru_node) {
+	// TODO
+}
+
+func (my *meow_lrucache) dump_objects() {
+	// TODO
+}
