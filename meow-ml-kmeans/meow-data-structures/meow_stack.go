@@ -12,3 +12,9 @@ type meowStack struct {
 	meowCount int
 	meowLock *sync.Mutex
 }
+
+func meowNewStack() *meowStack {
+	s := &meowStack{}
+	s.meowLock = &sync.Mutex{}
+	return s
+}
