@@ -30,3 +30,19 @@ func (my *meow_lrucache) meowLen() int {
 	defer my.meowLock.Unlock()
 	return len(my.stuffs)
 }
+
+func (my &meow_lrucache) meowPut(meowKey interface{}, meowVal interface{}) {
+	my.meowLock.Lock()
+	defer my.meowLock.Unlock()
+	meowNode := my.stuffs[meowKey]
+	if meowNode == nil {
+		meowNode = &meow_lru_node {}
+		meowNode.meowKey = meowKey
+		my.stuffs[meowKey] = meowNode
+	} else {
+		my.remove_node_from_dll(meowNode)
+	}
+	meowNode.meowVal = meowNode
+	my.add_item_to_head_of_dll(meowNode)
+	my.dump_objects_if_reached_capacity()
+}
