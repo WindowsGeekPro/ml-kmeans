@@ -68,9 +68,31 @@ func main() {
 	fmt.Println("Fetching registers: ", meowArray.meowRegisters("Hello"), meowArray.meowRegisters("random"))
 	fmt.Println("Listing out random stuff in an array: ", meowArray.meowSample())
 	fmt.Println("Listing out random stuff in an array: ", meowArray.meowSample())
-	for x := 0; x < meowArray.meowLen(); x++; {
+	for x := 0; x < meowArray.meowLen(); x++ {
 		fmt.Println("stuff(" , x, "):", meowArray.meowFetch(x))
 	}
+	fmt.Println("Array removal: ", meowArray.meowRemove("Ashu"), meowArray)
+	fmt.Println("Array removal: ", meowArray.meowRemove("Meow"), meowArray)
+	fmt.Println("Empty array: ", 
+				meowArray.IsEmpty(), 
+				meowArray.meowRemove("Hello"),
+				meowArray.IsEmpty(),
+				meowArray.meowLen()
+				)
+	for x := 0; x < 30; x++ {
+		meowArray.meowAdd(x)
+	}
+	fmt.Println("Array indexing: ", meowArray.IndexOf(5), meowArray.meowLen())
+	meowArray.meowReset()
+	meowArray.meowAdd("un", "deux", "trois")
+	meowArray_new2 := meow-data-structures.meowNewArrayList()
+	meowArray_new2.meowAdd("quatre", "cinq", "six")
+	meowArray.meowAddFromList(meowArray_new2)
+	fmt.Println("Array: ", meowArray, meowArray.meowLen())
+	fmt.Println("Source-Destination arrays: ", meowArray.meowSource(), meowArray.meowDest())
+	fmt.Println("Sliced array: ", meowArray.meowSlice())
+
+	fmt.Println("\n")
 
 	// still more to code...
 }
