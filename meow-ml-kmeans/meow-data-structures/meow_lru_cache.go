@@ -58,7 +58,18 @@ func (my *meow_lrucache) meowRemove(meowKey interface{}) {
 }
 
 func (my *meow_lrucache) remove_meowNode_from_dll(stuffy *meow_lru_node) {
-	// TODO
+	meowNodePrev := stuffy.meowPrev
+	meowNodeNxt := stuffy.meowNxt
+	if meowNodePrev != nil && meowNodeNxt != nil {
+		meowNodePrev.meowNxt = meowNodeNxt
+		meowNodeNxt.meowPrev = meowNodePrev
+	} else if meowNodeNxt != nil {
+		my.meowHead = stuffy.meowNxt
+		my.meowHead.meowPrev = nil
+	} else if meowNodePrev != nil {
+		my.meowTail = stuffy.meowPrev
+		my.meowTail.meowNxt = nil
+	}
 }
 
 func (my *meow_lrucache) add_stuffy_to_dll(stuffy *meow_lru_node) {
