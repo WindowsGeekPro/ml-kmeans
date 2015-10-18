@@ -68,6 +68,9 @@ func main() {
 	fmt.Println("Fetching registers: ", meowArray.meowRegisters("Hello"), meowArray.meowRegisters("random"))
 	fmt.Println("Listing out random stuff in an array: ", meowArray.meowSample())
 	fmt.Println("Listing out random stuff in an array: ", meowArray.meowSample())
+	for x := 0; x < meowArray.meowLen(); x++; {
+		fmt.Println("stuff(" , x, "):", meowArray.meowFetch(x))
+	}
 
 	// still more to code...
 }
