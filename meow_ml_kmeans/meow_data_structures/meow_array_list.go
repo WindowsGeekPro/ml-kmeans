@@ -157,7 +157,7 @@ func (my *meowArrayList) meowReset() {
 func (my *meowArrayList) meowAddFromList(meowList *meowArrayList) {
 	my.meowLock.Lock()
 	defer my.meowLock.Unlock()
-	if meowList == 0 {
+	if meowList == nil {
 		return
 	}
 	for x := 0; x < meowList.meowLen(); x++ {

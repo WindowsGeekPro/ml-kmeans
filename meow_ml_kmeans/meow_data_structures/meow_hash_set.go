@@ -25,7 +25,7 @@ func meowNewHashSet() *meowHashSet {
 func (my *meowHashSet) meowLen() int {
 	my.meowLock.Lock()
 	defer my.meowLock.Unlock()
-	return meowLen(my.stuffs)
+	return len(my.stuffs)
 }
 
 // slicing
@@ -95,7 +95,7 @@ func (my *meowHashSet) meowString() string {
 	for k := range my.stuffs {
 		meowStrfy := fmt.Sprintf("%s", k)
 		meowBuffer.WriteString(meowStrfy)
-		if x != meowLen(my.stuffs)-1 {
+		if x != len(my.stuffs)-1 {
 			meowBuffer.WriteString(", ")
 		}
 		x++
