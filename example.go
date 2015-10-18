@@ -104,7 +104,7 @@ func main() {
 	fmt.Println("\n")
 
 	fmt.Println("---Clustering---")
-	meowCluster := meow-ml.meowNewCluster(4)
+	meowCluster := meow-ml-kmeans.meowNewCluster(4)
 	meowCluster.meowAddSliceDots([]float64{48.2641334571,86.4516903905})
 	meowCluster.meowAddSliceDots([]float64{0.114004262656,35.8368597414})
 	meowCluster.meowAddSliceDots([]float64{97.4319168245,92.8009240744})
@@ -207,5 +207,8 @@ func main() {
 	meowCluster.meowAddSliceDots([]float64{5.93357833962,95.6812831872})
 	meow_clusters := meowCluster.meow_cluster()
 
-	// still more to code...
+	for x := 0; x < meow_clusters.meowLen(); x++ {
+		meow_cluster := meow_clusters.meowFetch(x).(*meow-ml.meowCluster)
+		// still more to code
+	}
 }
