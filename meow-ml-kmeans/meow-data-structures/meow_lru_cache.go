@@ -73,7 +73,18 @@ func (my *meow_lrucache) remove_meowNode_from_dll(stuffy *meow_lru_node) {
 }
 
 func (my *meow_lrucache) add_stuffy_to_dll(stuffy *meow_lru_node) {
-	// TODO
+	if my.meowHead == nil {
+		my.meowHead = stuffy
+		my.meowTail = stuffy
+		stuffy.meowNxt = nil
+		stuffy.meowPrev = nil
+	} else {
+		meowHeadOld := my.meowHead
+		meowHeadOld.meowPrev = stuffy
+		my.meowHead = stuffy
+		my.meowHead.meowNxt = meowHeadOld
+		my.meowHead.meowPrev = nil
+	}
 }
 
 func (my *meow_lrucache) dump_objects() {
