@@ -94,5 +94,14 @@ func main() {
 
 	fmt.Println("\n")
 
+	fmt.Println("---Hash Set---")
+	meowSet := meow-data-structures.meowNewHashSet()
+	meowSet.meowAdd("hello", "meow", "Hello")
+	fmt.Println("List out total stuffs in the set: ", meowSet.meowLen(), meowSet)
+	meowSlicingSet := meowSet.meowSlice()
+	fmt.Println("Sliced set: ", meowSlicingSet, len(meowSlicingSet))
+
+	fmt.Println("\n")
+
 	// still more to code...
 }
