@@ -209,6 +209,10 @@ func main() {
 
 	for x := 0; x < meow_clusters.meowLen(); x++ {
 		meow_cluster := meow_clusters.meowFetch(x).(*meow-ml.meowCluster)
-		// still more to code
+		fmt.Println("Clustering: ", meow_cluster.blackhole().stuffs().meowSlice())
+		for xx := 0; xx < meow_cluster.dots().meowLen(); xx++ {
+			dot := meow_cluster.dots().meowFetch(xx).(*meow-ml.meowPoint)
+			fmt.Println("---", dot.stuffs().meowSlice())
+		}
 	}
 }
