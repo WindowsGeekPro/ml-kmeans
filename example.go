@@ -2,14 +2,14 @@ package main
 
 import (
 	"fmt"
-	"ashumeow/meow-ml-kmeans/meow-data-structures"
-	"ashumeow/meow-ml-kmeans/meow-ml"
-	"ashumeow/meow-ml-kmeans"
+	"ashumeow/meow_ml_kmeans/meow_data_structures"
+	"ashumeow/meow_ml_kmeans/meow_ml"
+	"ashumeow/meow_ml_kmeans"
 )
 
 func main() {
 	fmt.Println("---Queue---")
-	meowQueue := meow-data-structures.meowNewQueue()
+	meowQueue := meow_data_structures.meowNewQueue()
 	meowQueue.meowPush("Testing... ")
 	meowQueue.meowPush(4)
 	meowQueue.meowPush(5)
@@ -32,7 +32,7 @@ func main() {
 	fmt.Println("\n")
 
 	fmt.Println("---Stack---")
-	meowStack := meow-data-structures.meowNewStack()
+	meowStack := meow_data_structures.meowNewStack()
 	meowStack.meowPush("Hold on... ")
 	meowStack.meowPush(4)
 	meowStack.meowPush(5)
@@ -55,7 +55,7 @@ func main() {
 	fmt.Println("\n")
 
 	fmt.Println("---Array list---")
-	meowArray := meow-data-structures.meowNewArrayList()
+	meowArray := meow_data_structures.meowNewArrayList()
 	fmt.Println("Listing out random stuff in an empty array: ", meowArray.meowSample())
 	meowArray.meowAdd("Hello")
 	meowArray.meowAdd("Ashu")
@@ -85,7 +85,7 @@ func main() {
 	fmt.Println("Array indexing: ", meowArray.IndexOf(5), meowArray.meowLen())
 	meowArray.meowReset()
 	meowArray.meowAdd("un", "deux", "trois")
-	meowArray_new2 := meow-data-structures.meowNewArrayList()
+	meowArray_new2 := meow_data_structures.meowNewArrayList()
 	meowArray_new2.meowAdd("quatre", "cinq", "six")
 	meowArray.meowAddFromList(meowArray_new2)
 	fmt.Println("Array: ", meowArray, meowArray.meowLen())
@@ -95,7 +95,7 @@ func main() {
 	fmt.Println("\n")
 
 	fmt.Println("---Hash Set---")
-	meowSet := meow-data-structures.meowNewHashSet()
+	meowSet := meow_data_structures.meowNewHashSet()
 	meowSet.meowAdd("hello", "meow", "Hello")
 	fmt.Println("List out total stuffs in the set: ", meowSet.meowLen(), meowSet)
 	meowSlicingSet := meowSet.meowSlice()
@@ -104,7 +104,7 @@ func main() {
 	fmt.Println("\n")
 
 	fmt.Println("---Clustering---")
-	meowCluster := meow-ml-kmeans.meowNewCluster(4)
+	meowCluster := meow_ml_kmeans.meowNewCluster(4)
 	meowCluster.meowAddSliceDots([]float64{48.2641334571,86.4516903905})
 	meowCluster.meowAddSliceDots([]float64{0.114004262656,35.8368597414})
 	meowCluster.meowAddSliceDots([]float64{97.4319168245,92.8009240744})
@@ -208,10 +208,10 @@ func main() {
 	meow_clusters := meowCluster.meow_cluster()
 
 	for x := 0; x < meow_clusters.meowLen(); x++ {
-		meow_cluster := meow_clusters.meowFetch(x).(*meow-ml.meowCluster)
+		meow_cluster := meow_clusters.meowFetch(x).(*meow_ml.meowCluster)
 		fmt.Println("Clustering: ", meow_cluster.blackhole().stuffs().meowSlice())
 		for xx := 0; xx < meow_cluster.dots().meowLen(); xx++ {
-			dot := meow_cluster.dots().meowFetch(xx).(*meow-ml.meowPoint)
+			dot := meow_cluster.dots().meowFetch(xx).(*meow_ml.meowPoint)
 			fmt.Println("---", dot.stuffs().meowSlice())
 		}
 	}
