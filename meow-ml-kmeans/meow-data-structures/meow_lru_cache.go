@@ -52,7 +52,7 @@ func (my *meow_lrucache) meowRemove(meowKey interface{}) {
 	defer my.meowLock.Unlock()
 	meowNode := my.stuffs[meowKey]
 	if meowNode != nil {
-		self.remove_meowNode_from_dll(meowNode)
+		my.remove_meowNode_from_dll(meowNode)
 		delete(my.stuffs, meowKey)
 	}
 }
@@ -90,5 +90,9 @@ func (my *meow_lrucache) add_stuffy_to_dll(stuffy *meow_lru_node) {
 // dump objects if it has reached to a threshold level
 // This avoids unwanted congestion issues
 func (my *meow_lrucache) dump_objects() {
-	// TODO
+	for ; len(my.stuffs) > my.meowPower; {
+		meowNode_LeastUsage := my.meowTail
+		delete(my.stuffs, meowNode_LeastUsage.meowKey)
+		my.meowTail = my.meowTail.meowPrev
+	}
 }
