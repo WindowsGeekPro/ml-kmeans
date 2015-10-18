@@ -1,4 +1,11 @@
 ***
 Machine Learning (ML) --- Implementing K-means clustering algorithm in Go
 ***
-With some data structures power such as ArrayList, HashSet, Queue, Stack and LRUCache --- one of the ML algorithm known as the K-means clustering algorithm is implemented.
+***
+Language: Go <br>
+Tool: Git bash <br>
+Version: <br>
+OS: Windows 10 <br>
+status: WIP <br>
+***
+BSD 3.0 License (revised)
