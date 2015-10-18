@@ -13,7 +13,7 @@ type meow_lrucache struct {
 	meowLock *sync.Mutex
 	meowHead *meow_lru_node
 	meowTail *meow_lru_node
-	meowPower int
+	meowPower int // meowPower refers to a threshold level
 	stuffs map[interface{}]*meow_lru_node
 }
 
@@ -87,6 +87,8 @@ func (my *meow_lrucache) add_stuffy_to_dll(stuffy *meow_lru_node) {
 	}
 }
 
+// dump objects if it has reached to a threshold level
+// This avoids unwanted congestion issues
 func (my *meow_lrucache) dump_objects() {
 	// TODO
 }
