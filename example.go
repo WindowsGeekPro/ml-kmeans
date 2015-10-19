@@ -64,7 +64,7 @@ func main() {
 	fmt.Println("Array: ", meowArray)
 	fmt.Println("Testing arrays now... \n")
 	fmt.Println("Array[1]: ", meowArray.meowFetch(1))
-	fmt.Println("Getting index of Hello: ", meowArray.IndexOf("Hello"))
+	fmt.Println("Getting index of Hello: ", meowArray.meowIndex("Hello"))
 	fmt.Println("Fetching registers: ", meowArray.meowRegisters("Hello"), meowArray.meowRegisters("random"))
 	fmt.Println("Listing out random stuff in an array: ", meowArray.meowSample())
 	fmt.Println("Listing out random stuff in an array: ", meowArray.meowSample())
@@ -82,7 +82,7 @@ func main() {
 	for x := 0; x < 30; x++ {
 		meowArray.meowAdd(x)
 	}
-	fmt.Println("Array indexing: ", meowArray.IndexOf(5), meowArray.meowLen())
+	fmt.Println("Array indexing: ", meowArray.meowIndex(5), meowArray.meowLen())
 	meowArray.meowReset()
 	meowArray.meowAdd("un", "deux", "trois")
 	meowArray_new2 := meow_data_structures.meowNewArrayList()
